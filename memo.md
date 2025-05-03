@@ -168,6 +168,21 @@ val hash = hashMapOf<K, V>()
 val entries: MutableSet<Map.Entry<K, V>> = hash.entries
 ```
 
+## Queue
+### ArrayDeque
+```kotlin
+val queue = ArrayDeque<Int>()
+queue.addLast(x)                // offer
+val front = queue.removeFirst() // poll
+```
+
+### PriorityQueue
+```kotlin
+val pq = PriorityQueue<Int>()                  // 오름차순
+val maxPq = PriorityQueue<Int>(reverseOrder()) // 내림차순
+pq.offer(x); val top = pq.poll()
+```
+
 
 ## String
 ### trimStart
