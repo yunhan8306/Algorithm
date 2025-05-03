@@ -253,3 +253,33 @@ fun abs(x: T): T
 Math.abs(-5) = 5
 Math.abs(-5.5) = 5.5
 ```
+
+# 알고리즘 예시
+## Union–Find 
+```kotlin
+class DisjointSet(private val n: Int) {
+    // 0..n 범위의 parent 배열 (1-based 혹은 0-based는 용도에 맞게 조정)
+    private val parent = IntArray(n + 1) { it }
+
+    fun find(x: Int): Int {
+        if (parent[x] != x) {
+            parent[x] = find(parent[x])  // 경로 끝까지 재귀 → 완전 압축
+        }
+        return parent[x]
+    }
+
+    // 두 집합을 합치기
+    fun union(a: Int, b: Int) {
+        val pa = find(a)
+        val pb = find(b)
+        if (pa != pb) {
+            parent[pb] = pa
+        }
+    }
+
+    // 같은 집합인지 확인하는 편의 메서드
+    fun connected(a: Int, b: Int): Boolean =
+        find(a) == find(b)
+}
+
+```
